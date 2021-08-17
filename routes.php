@@ -1,3 +1,6 @@
 <?php
 
-echo 'Routes';
+$routes = [
+  'posts' => 'posts.php',
+  'comments' => 'comments.php'
+];
