@@ -1,3 +1,7 @@
 <?php
 
-echo 'Config';
+$db = [
+  'host' => 'localhost',
+  'user' => 'root',
+  'password' => ''
+];
