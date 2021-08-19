@@ -14,6 +14,8 @@ class Router
         foreach ($this->routes as $route => $file) {
             if (strpos($url, $route) !== false) {
                 return $file;
+            } else {
+                return $this->routes['not_found'];
             }
         }
     }
