@@ -4,19 +4,217 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style></style>
+    <style>
+      :root {
+        --clr-purple: 263 55% 52%;
+        --clr-gray: 217 19% 35%;
+        --clr-light-gray: 210 46% 95%;
+        --clr-black: 219 29% 14%;
+        --clr-white: 0 0% 100%;
+
+        --fw-400: 500;
+        --fw-700: 600;
+
+        --fs-300: 0.6875rem;
+        --fs-400: 0.8125rem;
+        --fs-500: 1.25rem;
+      }
+
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+
+      body,
+      h1,
+      h2,
+      h3,
+      h4,
+      p {
+        margin: 0;
+      }
+
+      img,
+      picture {
+        max-width: 100%;
+        display: block;
+      }
+
+      body {
+        background-color: hsl(var(--clr-light-gray));
+        display: grid;
+        font-weight: var(--fw-400);
+        line-height: 1.5;
+        min-height: 100vh;
+        place-content: center;
+        text-rendering: optimizeSpeed;
+      }
+
+      h1,
+      h2,
+      h3 {
+        font-weight: var(--fw-700);
+      }
+
+      .flex {
+        display: flex;
+        gap: var(--gap, 1rem);
+      }
+
+      .flow > *:where(:not(:first-child)) {
+        margin-top: var(--flow-space, 1em);
+      }
+
+      .bg-purple {
+        background: hsl(var(--clr-purple));
+      }
+
+      .bg-gray {
+        background: hsl(var(--clr-gray));
+      }
+
+      .bg-black {
+        background: hsl(var(--clr-black));
+      }
+
+      .bg-white {
+        background: hsl(var(--clr-white));
+      }
+
+      .text-white {
+        color: hsl(var(--clr-white));
+      }
+
+      .text-gray {
+        color: hsl(var(--clr-gray));
+      }
+
+      .border-2 {
+        border: 2px solid #a775f1;
+      }
+
+      .cards-grid {
+        display: grid;
+        gap: 1.5rem;
+        grid-auto-columns: 1fr;
+        grid-template-areas:
+        'one'
+        'two'
+        'three'
+        'four'
+        'five';
+
+        margin-inline: auto;
+        padding-block: 2rem;
+        width: min(95%, 70rem);
+      }
+
+      .card {
+        font-size: var(--fs-400);
+        padding: 2rem;
+        border-radius: 0.5rem;
+        box-shadow: 2.5rem 3.75rem 3rem -3rem hsl(var(--clr-gray) / 0.25);
+      }
+
+      .card:nth-child(1) {
+        grid-area: one;
+      }
+      .card:nth-child(2) {
+        grid-area: two;
+      }
+      .card:nth-child(3) {
+        grid-area: three;
+      }
+      .card:nth-child(4) {
+        grid-area: four;
+      }
+      .card:nth-child(5) {
+        grid-area: five;
+      }
+
+      @media screen and (min-width: 33em) {
+        .cards-grid {
+            grid-template-areas:
+            "one one"
+            "two three"
+            "five five"
+            "four four";
+        }
+      }
+
+      @media screen and (min-width: 38em) {
+        .cards-grid {
+          grid-template-areas:
+          'one one'
+          'two five'
+          'three five'
+          'four four';
+        }
+      }
+
+      @media screen and (min-width: 54em) {
+        .cards-grid {
+            grid-template-areas:
+            "one one two"
+            "five five five"
+            "three four four";
+        }
+      }
+
+      @media screen and (min-width: 75em) {
+        .cards-grid {
+            grid-template-areas:
+            "one one two five"
+            "three four four five";
+        }
+      }
+
+
+      .card.quote {
+        background-image: url("./images/bg-pattern-quotation.svg");
+        background-repeat: no-repeat;
+        background-position: top right 10%;
+      }
+
+      .card img {
+        width: 1.75rem;
+        aspect-ratio: 1;
+        border-radius: 50%;
+      }
+
+      .card .name {
+        font-size: var(--fs-400);
+        font-weight: var(--fw-400);
+        line-height: 1;
+      }
+
+      .card .position {
+        font-size: var(--fs-300);
+        opacity: 0.5;
+      }
+
+      .card > p:first-of-type {
+        font-size: var(--fs-500);
+        line-height: 1.2;
+      }
+
+      .card > p:last-of-type {
+        opacity: 0.7;
+      }
+    </style>
     <title>Testimonials Grid</title>
   </head>
   <body>
-    <main class="">
-      <article class="">
-        <div class="">
+    <main class="cards-grid">
+      <article class="card flow bg-purple quote text-white">
+        <div class="flex">
           <div>
-            <img  src="images/image-daniel.jpg" alt="daniel clifford">
+            <img class="border-2" src="images/image-daniel.jpg" alt="daniel clifford">
           </div>
           <div>
-            <h2 class="">Daniel Clifford</h2>
-            <p class="">Verified Graduate</p>
+            <h2 class="name">Daniel Clifford</h2>
+            <p class="position">Verified Graduate</p>
           </div>
         </div>
         <p>
@@ -31,14 +229,14 @@
           the course, I’ve successfully switched careers, working as a Software Engineer at a VR startup. ”
         </p>
       </article>
-      <article class="">
-        <div class="">
+      <article class="card flow bg-gray text-white">
+        <div class="flex">
           <div>
-            <img src="images/image-jonathan.jpg" alt="Jonathan Walters">
+            <img class="border-2" src="images/image-jonathan.jpg" alt="Jonathan Walters">
           </div>
           <div>
-            <h2 class="">Jonathan Walters</h2>
-            <p class="">Verified Graduate</p>
+            <h2 class="name">Jonathan Walters</h2>
+            <p class="position">Verified Graduate</p>
           </div>
         </div>
         <p>
@@ -49,14 +247,14 @@
           for a big company. This was one of the best investments I’ve made in myself. ”
         </p>
       </article>
-      <article class="">
-        <div class="">
+      <article class="card flow bg-white text-gray">
+        <div class="flex">
           <div>
-            <img src="images/image-jeanette.jpg" alt="Jeanette Harmon">
+            <img class="border-2" src="images/image-jeanette.jpg" alt="Jeanette Harmon">
           </div>
           <div>
-            <h2 class="">Jeanette Harmon</h2>
-            <p class="">Verified Graduate</p>
+            <h2 class="name">Jeanette Harmon</h2>
+            <p class="position">Verified Graduate</p>
           </div>
         </div>
         <p>
@@ -66,14 +264,14 @@
           while doing something I love. ”
         </p>
       </article>
-      <article class="">
-        <div class="">
+      <article class="card flow bg-black text-white">
+        <div class="flex">
           <div>
-            <img class="border-primary-400" src="images/image-patrick.jpg" alt="Patrick Abrams">
+            <img class="border-2" src="images/image-patrick.jpg" alt="Patrick Abrams">
           </div>
           <div>
-            <h2 class="">Patrick Abrams</h2>
-            <p class="">Verified Graduate</p>
+            <h2 class="name">Patrick Abrams</h2>
+            <p class="position">Verified Graduate</p>
           </div>
         </div>
         <p>
@@ -87,14 +285,14 @@
           an incredible community of smart and amazing people. ”
         </p>
       </article>
-      <article class="">
-        <div class="">
+      <article class="card flow bg-white text-gray">
+        <div class="flex">
           <div>
-            <img src="images/image-kira.jpg" alt="Kira Whittle">
+            <img class="border-2" src="images/image-kira.jpg" alt="Kira Whittle">
           </div>
           <div>
-            <h2 class="">Kira Whittle</h2>
-            <p class="">Verified Graduate</p>
+            <h2 class="name">Kira Whittle</h2>
+            <p class="position">Verified Graduate</p>
           </div>
         </div>
         <p>
